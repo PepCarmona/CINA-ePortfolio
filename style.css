@@ -1,0 +1,355 @@
+:root {
+    --purple: #BD78F5;
+    --purple-dark: #7A42A8;
+    --green: #5FF599;
+    --green-dark: #4AA86E;
+    --letter-light: rgb(216, 216, 216);
+    --letter-dark: rgb(56, 56, 56);
+}
+/* --- General Styles --- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--purple-dark);
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--purple);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, 
+html {
+    margin: 0;
+    padding: 0;
+    background-color: #ebebeb;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 400;
+    font-family: 'Zilla Slab', Georgia, 'Times New Roman', Times, serif;
+}
+
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: auto;
+    padding-bottom: 10px;
+}
+
+a {
+    color: var(--letter-dark);
+    text-decoration: none;
+}
+a:visited {
+    color: var(--letter-dark);
+}
+a:hover {
+    color: var(--purple-dark);
+}
+
+.nav-menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    width: fit-content;
+    margin-left: auto;
+    height: 100px;
+    margin-bottom: 40px;
+}
+.nav-link {
+    padding: 10px;
+    padding-bottom: 5px;
+    margin: 10px;
+    margin-bottom: 0;
+}
+.nav-link.active {
+    border-bottom: 1px solid var(--purple);
+}
+.nav-link.active > a {
+    font-weight: bold;
+    color: var(--purple);
+}
+
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 400px;
+}
+
+.separator {
+    width: 60%;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    border-bottom: 2px solid var(--purple);
+}
+
+.separator-vertical {
+    height: 70%;
+    border-right: 1px solid var(--letter-light);
+}
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--purple-dark);
+    color: var(--letter-light);
+    height: 60px;
+}
+.footer a {
+    color: var(--letter-light);
+}
+.footer a:visited {
+    color: var(--letter-light);
+}
+.footer .contacto > div:hover {
+    color: var(--purple);
+}
+.footer .contacto > div:hover a {
+    color: var(--purple);
+}
+
+.topArrow {
+    display: none;
+    position: fixed;
+    bottom: 70px;
+    right: 10px;
+    height: 50px;
+    width: 50px;
+    font-size: 1.5rem;
+    background-color: var(--purple-dark);
+    color: var(--letter-light);
+    border-radius: 3px;
+}
+.topArrow.active {
+    display: block;
+}
+.topArrow i {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    line-height: 50px;
+}
+
+/* --- Home Styles --- */
+.home-header {
+    height: calc(100vh - 212px);
+    padding: 30px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url("img/shakespeare-book.jpg");
+    background-size: cover;
+    background-position-y: 48%;
+
+    justify-content: start;
+}
+.home-header .body {
+    width: 50%;
+    color: var(--letter-light);
+}
+.home-header .body h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+}
+
+.about-portfolio h2 {
+    width: 20%;
+    font-size: 3rem;
+}
+.about-portfolio .body {
+    width: 40%;
+}
+
+.activity-gallery h2 {
+    width: 100%;
+    text-align: center;
+    font-size: 2.5rem;
+}
+.activity-gallery .body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+}
+.activity-gallery .body > div {
+    position: relative;
+    width: 20%;
+    margin: 30px;
+}
+.activity-gallery img {
+    width: 100%;
+    border: 2px solid var(--green-dark);
+    border-radius: 3px;
+}
+.activity-gallery .tooltip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    width: 100%;
+    background-color: #4aa86ed0;
+    color: var(--letter-dark);
+    border-radius: 3px;
+
+    position: absolute;
+    top: 49%;
+    left: 0%;
+    height: 50%;
+    z-index: 9;
+}
+.activity-gallery .body > div:hover .tooltip {
+    visibility: visible;
+}
+.activity-gallery .body > div:hover img {
+    box-shadow: 0 0 4px var(--green-dark);
+}
+
+/* --- Presentación Styles */
+.about-me {
+    display: flex;
+    justify-content: space-around;
+}
+.about-me .title {
+    width: 20%;
+}
+.about-me .title img {
+    border-radius: 50%;
+    width: 100%;
+}
+.about-me .title h2 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+.about-me .body {
+    width: 60%;
+}
+
+/* --- UD Styles --- */
+.displayer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    height: calc(100vh - 140px);
+}
+.concept-list {
+    width: 25%;
+    margin-bottom: 30px;
+}
+.concept-list ul {
+    display: table;
+    table-layout: fixed;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+.concept-list ul li {
+    cursor: pointer;
+    display: table-row;
+    width: 100%;
+}
+.concept-list ul li:hover {
+    color: var(--green-dark);
+}
+.concept-list ul li.active span {
+    color: var(--purple);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+.concept-list ul li span {
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: 300;
+    width: 100%;
+    padding-left: 30px;
+    border-bottom: 1px solid var(--purple);
+}
+.concept-list ul li:nth-last-child(1) span {
+    border-bottom: none;
+}
+.concept-list ul li i {
+    display: table-cell;
+    vertical-align: middle;
+    color: grey;
+    font-size: .8rem;
+}
+
+.content-container {
+    width: 70%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+.content-container > div:not(.active) {
+    display: none;
+}
+
+.content-section .title {
+    cursor: pointer;
+    display: flex;
+    width: fit-content;
+    padding-bottom: 7px;
+}
+.content-section .title h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--letter-dark);
+}
+.content-section .title i {
+    margin-left: 4px;
+    margin-top: 6px;
+    font-size: 1.2rem;
+    color: var(--purple);
+    height: 30px;
+    padding: 3px;
+}
+.content-section .body {
+    display: none;
+    margin-bottom: 50px;
+}
+.content-section.active .body {
+    display: block;
+}
+.content-section .body * {
+    text-align: justify;
+    text-justify: inter-word;
+}
+.content-section .body blockquote {
+    font-size: .9rem;
+}
+.content-section .body .image-wrapper {
+    width: 85%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.content-section .body img {
+    width: 100%;
+}
+.content-section .body figcaption {
+    font-size: .7rem;
+}
+
+.content-section.teoria h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
