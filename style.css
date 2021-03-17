@@ -88,7 +88,14 @@ a:hover {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
-    min-height: 400px;
+    transition: all 1s ease;
+}
+.card * {
+    transition: all 1s ease;
+}
+.card *.hidden {
+    opacity: 0;
+    transform: scale(0.95);
 }
 
 .separator {
@@ -126,9 +133,10 @@ a:hover {
 }
 
 .topArrow {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
     position: fixed;
-    bottom: 70px;
+    bottom: -70px;
     right: 10px;
     height: 50px;
     width: 50px;
@@ -136,15 +144,62 @@ a:hover {
     background-color: var(--purple-dark);
     color: var(--letter-light);
     border-radius: 3px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+.topArrow:hover {
+    transform: rotate(45deg);
 }
 .topArrow.active {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    bottom: 70px;
 }
 .topArrow i {
     height: 100%;
     width: 100%;
     text-align: center;
     line-height: 50px;
+    transition: all .3s ease;
+}
+.topArrow:hover i {
+    transform: rotate(-45deg);
+}
+
+.image-wrapper {
+    width: 85%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.two-image-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px 0;
+}
+.two-image-wrapper .small {
+    width: 40% !important;
+}
+.two-image-wrapper .small img {
+    transform: translateY(50%);
+}
+.two-image-wrapper .big {
+    width: 60% !important;
+}
+.two-image-wrapper .medium-small {
+    width: 30% !important;
+    margin-right: 10%;
+}
+.two-image-wrapper .medium-small img {
+    transform: translateY(25%);
+}
+.two-image-wrapper .medium-big {
+    width: 60% !important;
+}
+span.important {
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 /* --- Home Styles --- */
@@ -156,14 +211,35 @@ a:hover {
     background-position-y: 48%;
 
     justify-content: start;
+    align-items: flex-end;
+    padding-bottom: 50px;
+}
+.home-header.hidden {
+    opacity: 0;
+    transform: scale(0.9);
+}
+.home-header.hidden * {
+    opacity: 0;
 }
 .home-header .body {
-    width: 50%;
     color: var(--letter-light);
 }
 .home-header .body h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 300;
+    margin-left: 40px;
+}
+.home-header .body blockquote {
+    line-height: 22px;
+    letter-spacing: 1px;
+    text-align: justify;
+}
+.home-header .body blockquote .author {
+    display: block;
+    width: 100%;
+    text-align: right;
+    margin-top: 20px;
+    font-size: .8rem;
 }
 
 .about-portfolio h2 {
@@ -172,6 +248,9 @@ a:hover {
 }
 .about-portfolio .body {
     width: 40%;
+    text-align: justify;
+    line-height: 22px;
+    letter-spacing: 1px;
 }
 
 .activity-gallery h2 {
@@ -185,43 +264,49 @@ a:hover {
     justify-content: center;
     padding: 10px;
 }
-.activity-gallery .body > div {
+.gallery-image {
     position: relative;
     width: 20%;
-    margin: 30px;
+    margin: 3.5%;
+    transition: all .3s ease;
 }
-.activity-gallery img {
+.gallery-image img {
     width: 100%;
-    border: 2px solid var(--green-dark);
+    border: 2px solid var(--purple-dark);
     border-radius: 3px;
 }
-.activity-gallery .tooltip {
+.gallery-image .tooltip {
     display: flex;
     align-items: center;
     justify-content: center;
     visibility: hidden;
+    opacity: 0;
     width: 100%;
-    background-color: #4aa86ed0;
-    color: var(--letter-dark);
+    background-color: rgba(122, 66, 168, 0.85);
+    color: var(--letter-light);
     border-radius: 3px;
 
     position: absolute;
-    top: 49%;
+    top: 50%;
     left: 0%;
     height: 50%;
-    z-index: 9;
+
+    transition: all .3s ease;
 }
-.activity-gallery .body > div:hover .tooltip {
+.gallery-image:hover {
+    transform: scale(1.1);
+}
+.gallery-image:hover .tooltip {
     visibility: visible;
+    opacity: 1;
 }
-.activity-gallery .body > div:hover img {
-    box-shadow: 0 0 4px var(--green-dark);
+.agallery-image:hover img {
+    box-shadow: 0 0 4px var(--purple-dark);
 }
 
 /* --- Presentación Styles */
 .about-me {
-    display: flex;
-    justify-content: space-around;
+    align-items: flex-end;
 }
 .about-me .title {
     width: 20%;
@@ -229,13 +314,19 @@ a:hover {
 .about-me .title img {
     border-radius: 50%;
     width: 100%;
+    margin-bottom: 10px;
 }
-.about-me .title h2 {
+.about-me h2 {
     font-size: 2.5rem;
-    text-align: center;
+    width: 100%;
 }
 .about-me .body {
     width: 60%;
+}
+.about-me .body p {
+    text-align: justify;
+    line-height: 23px;
+    letter-spacing: 1px;
 }
 
 /* --- UD Styles --- */
@@ -265,7 +356,7 @@ a:hover {
     width: 100%;
 }
 .concept-list ul li:hover {
-    color: var(--green-dark);
+    color: var(--purple-dark);
 }
 .concept-list ul li.active span {
     color: var(--purple);
@@ -288,6 +379,7 @@ a:hover {
     vertical-align: middle;
     color: grey;
     font-size: .8rem;
+    pointer-events: none;
 }
 
 .content-container {
@@ -302,19 +394,26 @@ a:hover {
     display: none;
 }
 
+.content-section {
+    margin-top: 25px;
+}
+.content-section:nth-child(1) {
+    margin-top: 0;
+}
 .content-section .title {
-    cursor: pointer;
     display: flex;
     width: fit-content;
     padding-bottom: 7px;
 }
 .content-section .title h2 {
+    cursor: pointer;
     font-size: 1.8rem;
     font-weight: 600;
     margin: 0;
     color: var(--letter-dark);
 }
 .content-section .title i {
+    pointer-events: none;
     margin-left: 4px;
     margin-top: 6px;
     font-size: 1.2rem;
@@ -324,32 +423,81 @@ a:hover {
 }
 .content-section .body {
     display: none;
-    margin-bottom: 50px;
 }
 .content-section.active .body {
     display: block;
 }
 .content-section .body * {
     text-align: justify;
-    text-justify: inter-word;
 }
 .content-section .body blockquote {
     font-size: .9rem;
-}
-.content-section .body .image-wrapper {
-    width: 85%;
-    margin: auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
 }
 .content-section .body img {
     width: 100%;
 }
 .content-section .body figcaption {
     font-size: .7rem;
+    text-align: center;
 }
 
 .content-section.teoria h3 {
     font-size: 1.5rem;
     font-weight: 600;
+}
+
+.content-section.entregas.active .body {
+    display: flex;
+    flex-wrap: wrap;
+}
+.entregas .body .activity-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.activity-wrapper .reflexion {
+    width: 70%;
+    padding: 3.5%;
+}
+.activity-wrapper .retro {
+    width: 100%;
+    padding: 3.5%;
+}
+.activity-wrapper .retro .table {
+    display: table;
+    min-height: 200px;
+    border: 1px solid var(--purple-dark);
+}
+.activity-wrapper .retro .table-cell {
+    display: table-cell;
+    border-left: 1px solid var(--purple-dark);
+    padding: 10px;
+    width: 40%;
+    vertical-align: middle;
+}
+.activity-wrapper .retro .table-cell:nth-child(1) {
+    border-left: none;
+}
+.activity-wrapper .retro .link {
+    font-weight: 600;
+}
+.activity-wrapper .retro .nota {
+    text-align: center;
+    font-size: 3rem;
+    width: 20%;
+    background-color: hsla(273, 44%, 46%, 0.15);
+}
+
+.documentos.active .body {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#contenido-concepto8 .retro .link {
+    width: 65%;
+}
+#contenido-concepto8 .retro .link {
+    width: 35%;
+}#contenido-concepto8 .reflexion {
+    width: 100%;
 }
