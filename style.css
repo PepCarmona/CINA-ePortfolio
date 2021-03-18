@@ -599,6 +599,7 @@ span.important {
         background-color: #f8f8f8;
     }
     .concept-list:hover li {
+        pointer-events: visible;
     }
     .concept-list:hover li span {
         visibility: visible;
