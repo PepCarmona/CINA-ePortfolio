@@ -113,6 +113,7 @@ a:hover {
 
 .footer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     background-color: var(--purple-dark);
@@ -500,4 +501,111 @@ span.important {
     width: 35%;
 }#contenido-concepto8 .reflexion {
     width: 100%;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+
+    .nav-menu {
+        height: 60px;
+        margin-bottom: 20px;
+    }
+
+    .home-header {
+        height: calc(100vh - 60px);
+    }
+    .home-header .body > * {
+        margin: 0;
+    }
+    .home-header .body h1 {
+        margin-bottom: 20px;
+    }
+
+    .about-me .title {
+        width: 70%;
+    }
+    .about-me .body {
+        width: 85%;
+    }
+
+    .about-portfolio h2 {
+        width: 85%;
+    }
+    .about-portfolio .body {
+        width: 85%;
+    }
+
+    .gallery-image {
+        width: 40%;
+    }
+
+    .footer {
+        height: auto;
+        padding: 10px;
+        line-height: 30px;
+        text-align: center;
+    }
+    .footer .separator-vertical {
+        display: none;
+    }
+    .footer > div {
+        width: 100%;
+    }
+    .topArrow {
+        right: -80px;
+        padding-right: 20px;
+        width: 70px;
+        bottom: 148px;
+    }
+    .topArrow.active {
+        right: -25px;
+        bottom: 148px;
+        background-color: rgba(122, 66, 169, 0.8);
+        border-radius: 50px;
+    }
+    .topArrow:hover {
+        transform: rotate(0deg);
+    }
+    .topArrow:hover i {
+        transform: rotate(0deg);
+    }
+
+    .displayer {
+        position: relative;
+    }
+
+    .concept-list {
+        position: absolute;
+        height: 100%;
+        padding: 2%;
+        background-color: transparent;
+        width: 10%;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+    .concept-list li {
+        pointer-events: none;
+    }
+    .concept-list li span {
+        visibility: hidden;
+    }
+    .concept-list:hover {
+        width: 50%;
+        border: 1px solid var(--purple-dark);
+        border-left: none;
+        background-color: #f8f8f8;
+    }
+    .concept-list:hover li {
+    }
+    .concept-list:hover li span {
+        visibility: visible;
+    }
+
+    .content-container {
+        width: 90%;
+        margin-left: 10%;
+    }
 }
